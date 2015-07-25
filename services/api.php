@@ -7,8 +7,8 @@
 
 		const DB_SERVER = "127.0.0.1";
 		const DB_USER = "root";
-		const DB_PASSWORD = "";
-		const DB = "angularcode_inventory";
+		const DB_PASSWORD = "posix1";
+		const DB = "ksd_inventory";
 
 		private $db = NULL;
 		private $mysqli = NULL;

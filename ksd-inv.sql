@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS ksd_exercise;
+CREATE DATABASE IF NOT EXISTS ksd_inventory;
 
-USE ksd_exercise;
+USE ksd_inventory;
 
 --
 -- Table structure for table `items`
