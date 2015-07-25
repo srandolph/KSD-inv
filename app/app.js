@@ -2,66 +2,66 @@ var app = angular.module('myApp', ['ngRoute']);
 app.factory("services", ['$http', function($http) {
   var serviceBase = 'services/'
     var obj = {};
-    obj.getCustomers = function(){
-        return $http.get(serviceBase + 'customers');
+    obj.getinventory = function(){
+        return $http.get(serviceBase + 'inventory');
     }
-    obj.getCustomer = function(customerID){
-        return $http.get(serviceBase + 'customer?id=' + customerID);
+    obj.getinventory = function(inventoryID){
+        return $http.get(serviceBase + 'inventory?id=' + inventoryID);
     }
 
-    obj.insertCustomer = function (customer) {
-    return $http.post(serviceBase + 'insertCustomer', customer).then(function (results) {
+    obj.insertinventory = function (inventory) {
+    return $http.post(serviceBase + 'insertinventory', inventory).then(function (results) {
         return results;
     });
 	};
 
-	obj.updateCustomer = function (id,customer) {
-	    return $http.post(serviceBase + 'updateCustomer', {id:id, customer:customer}).then(function (status) {
+	obj.updateinventory = function (id,inventory) {
+	    return $http.post(serviceBase + 'updateinventory', {id:id, inventory:inventory}).then(function (status) {
 	        return status.data;
 	    });
 	};
 
-	obj.deleteCustomer = function (id) {
-	    return $http.delete(serviceBase + 'deleteCustomer?id=' + id).then(function (status) {
+	obj.deleteinventory = function (id) {
+	    return $http.delete(serviceBase + 'deleteinventory?id=' + id).then(function (status) {
 	        return status.data;
 	    });
 	};
 
-    return obj;   
+    return obj;
 }]);
 
 app.controller('listCtrl', function ($scope, services) {
-    services.getCustomers().then(function(data){
-        $scope.customers = data.data;
+    services.getinventorys().then(function(data){
+        $scope.inventorys = data.data;
     });
 });
 
-app.controller('editCtrl', function ($scope, $rootScope, $location, $routeParams, services, customer) {
-    var customerID = ($routeParams.customerID) ? parseInt($routeParams.customerID) : 0;
-    $rootScope.title = (customerID > 0) ? 'Edit Customer' : 'Add Customer';
-    $scope.buttonText = (customerID > 0) ? 'Update Customer' : 'Add New Customer';
-      var original = customer.data;
-      original._id = customerID;
-      $scope.customer = angular.copy(original);
-      $scope.customer._id = customerID;
+app.controller('editCtrl', function ($scope, $rootScope, $location, $routeParams, services, inventory) {
+    var inventoryID = ($routeParams.inventoryID) ? parseInt($routeParams.inventoryID) : 0;
+    $rootScope.title = (inventoryID > 0) ? 'Edit inventory' : 'Add inventory';
+    $scope.buttonText = (inventoryID > 0) ? 'Update inventory' : 'Add New inventory';
+      var original = inventory.data;
+      original._id = inventoryID;
+      $scope.inventory = angular.copy(original);
+      $scope.inventory._id = inventoryID;
 
       $scope.isClean = function() {
-        return angular.equals(original, $scope.customer);
+        return angular.equals(original, $scope.inventory);
       }
 
-      $scope.deleteCustomer = function(customer) {
+      $scope.deleteinventory = function(inventory) {
         $location.path('/');
-        if(confirm("Are you sure to delete customer number: "+$scope.customer._id)==true)
-        services.deleteCustomer(customer.customerNumber);
+        if(confirm("Are you sure to delete inventory number: "+$scope.inventory._id)==true)
+        services.deleteinventory(inventory.inventoryNumber);
       };
 
-      $scope.saveCustomer = function(customer) {
+      $scope.saveinventory = function(inventory) {
         $location.path('/');
-        if (customerID <= 0) {
-            services.insertCustomer(customer);
+        if (inventoryID <= 0) {
+            services.insertinventory(inventory);
         }
         else {
-            services.updateCustomer(customerID, customer);
+            services.updateinventory(inventoryID, inventory);
         }
     };
 });
@@ -70,18 +70,18 @@ app.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
       when('/', {
-        title: 'Customers',
-        templateUrl: 'partials/customers.html',
+        title: 'inventorys',
+        templateUrl: 'partials/inventorys.html',
         controller: 'listCtrl'
       })
-      .when('/edit-customer/:customerID', {
-        title: 'Edit Customers',
-        templateUrl: 'partials/edit-customer.html',
+      .when('/edit-inventory/:inventoryID', {
+        title: 'Edit inventory',
+        templateUrl: 'partials/edit-inventory.html',
         controller: 'editCtrl',
         resolve: {
-          customer: function(services, $route){
-            var customerID = $route.current.params.customerID;
-            return services.getCustomer(customerID);
+          inventory: function(services, $route){
+            var inventoryID = $route.current.params.inventoryID;
+            return services.getinventory(inventoryID);
           }
         }
       })
