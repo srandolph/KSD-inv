@@ -31,7 +31,7 @@ app.factory("services", ['$http', function($http) {
 }]);
 
 app.controller('listCtrl', function ($scope, services) {
-    services.getinventories().then(function(data){
+    services.getInventories().then(function(data){
       alert(data.dat)
         $scope.inventories = data.data;
     });
