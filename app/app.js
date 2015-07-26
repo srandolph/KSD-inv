@@ -33,7 +33,7 @@ app.factory("services", ['$http', function($http) {
 app.controller('listCtrl', function ($scope, services) {
     services.getinventories().then(function(data){
       alert(data.dat)
-        $scope.inventory = data.data;
+        $scope.inventories = data.data;
     });
 });
 
