@@ -35,7 +35,7 @@
 				$this->response('',404); // If the method not exist with in this class "Page not found".
 		}
 
-		private function inventory(){
+		private function inventories(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
