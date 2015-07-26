@@ -39,7 +39,7 @@
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
-			$query="SELECT distinct c.itemNumber, c.itemName, c.serialNumber, c.type, c.room, c.scity, c.ts FROM angularcode_inventory c order by c.itemNumber desc";
+			$query="SELECT distinct c.itemNumber, c.itemName, c.serialNumber, c.type, c.room, c.scity, c.ts FROM ksd_inventory c order by c.itemNumber desc";
 			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 
 			if($r->num_rows > 0){
@@ -57,7 +57,7 @@
 			}
 			$id = (int)$this->_request['id'];
 			if($id > 0){
-				$query="SELECT distinct c.itemNumber, c.itemName, c.serialNumber, c.type, c.room, c.city, c.ts FROM angularcode_inventory c where c.itemNumber=$id";
+				$query="SELECT distinct c.itemNumber, c.itemName, c.serialNumber, c.type, c.room, c.city, c.ts FROM ksd_inventory c where c.itemNumber=$id";
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 				if($r->num_rows > 0) {
 					$result = $r->fetch_assoc();
@@ -86,7 +86,7 @@
 				$columns = $columns.$desired_key.',';
 				$values = $values."'".$$desired_key."',";
 			}
-			$query = "INSERT INTO angularcode_inventory(".trim($columns,',').") VALUES(".trim($values,',').")";
+			$query = "INSERT INTO ksd_inventory(".trim($columns,',').") VALUES(".trim($values,',').")";
 			if(!empty($inventory)){
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 				$success = array('status' => "Success", "msg" => "inventory Created Successfully.", "data" => $inventory);
@@ -112,7 +112,7 @@
 				}
 				$columns = $columns.$desired_key."='".$$desired_key."',";
 			}
-			$query = "UPDATE angularcode_inventory SET ".trim($columns,',')." WHERE itemNumber=$id";
+			$query = "UPDATE ksd_inventory SET ".trim($columns,',')." WHERE itemNumber=$id";
 			if(!empty($inventory)){
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 				$success = array('status' => "Success", "msg" => "inventory ".$id." Updated Successfully.", "data" => $inventory);
@@ -127,7 +127,7 @@
 			}
 			$id = (int)$this->_request['id'];
 			if($id > 0){
-				$query="DELETE FROM angularcode_inventorys WHERE itemNumber = $id";
+				$query="DELETE FROM ksd_inventorys WHERE itemNumber = $id";
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 				$success = array('status' => "Success", "msg" => "Successfully deleted one record.");
 				$this->response($this->json($success),200);
