@@ -127,7 +127,7 @@
 			}
 			$id = (int)$this->_request['id'];
 			if($id > 0){
-				$query="DELETE FROM ksd_inventorys WHERE itemNumber = $id";
+				$query="DELETE FROM ksd_inventory WHERE itemNumber = $id";
 				$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 				$success = array('status' => "Success", "msg" => "Successfully deleted one record.");
 				$this->response($this->json($success),200);
