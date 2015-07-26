@@ -2,8 +2,8 @@ var app = angular.module('myApp', ['ngRoute']);
 app.factory("services", ['$http', function($http) {
   var serviceBase = 'services/'
     var obj = {};
-    obj.getInventory = function(){
-        return $http.get(serviceBase + 'inventory');
+    obj.getInventories = function(){
+        return $http.get(serviceBase + 'inventories');
     }
     obj.getInventory = function(inventoryID){
         return $http.get(serviceBase + 'inventory?id=' + inventoryID);
