@@ -35,31 +35,7 @@
 				$this->response('',404); // If the method not exist with in this class "Page not found".
 		}
 
-		private function login(){
-			if($this->get_request_method() != "POST"){
-				$this->response('',406);
-			}
-			$email = $this->_request['email'];
-			$password = $this->_request['pwd'];
-			if(!empty($email) and !empty($password)){
-				if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-					$query="SELECT uid, name, email FROM users WHERE email = '$email' AND password = '".md5($password)."' LIMIT 1";
-					$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
-
-					if($r->num_rows > 0) {
-						$result = $r->fetch_assoc();
-						// If success everythig is good send header as "OK" and user details
-						$this->response($this->json($result), 200);
-					}
-					$this->response('', 204);	// If no records "No Content" status
-				}
-			}
-
-			$error = array('status' => "Failed", "msg" => "Invalid Email address or Password");
-			$this->response($this->json($error), 400);
-		}
-
-		private function inventorys(){
+		private function inventory(){
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
@@ -91,7 +67,7 @@
 			$this->response('',204);	// If no records "No Content" status
 		}
 
-		private function insertinventory(){
+		private function insertInventory(){
 			if($this->get_request_method() != "POST"){
 				$this->response('',406);
 			}
@@ -118,7 +94,7 @@
 			}else
 				$this->response('',204);	//"No Content" status
 		}
-		private function updateinventory(){
+		private function updateInventory(){
 			if($this->get_request_method() != "POST"){
 				$this->response('',406);
 			}
@@ -145,7 +121,7 @@
 				$this->response('',204);	// "No Content" status
 		}
 
-		private function deleteinventory(){
+		private function deleteInventory(){
 			if($this->get_request_method() != "DELETE"){
 				$this->response('',406);
 			}

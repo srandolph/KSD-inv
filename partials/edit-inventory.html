@@ -27,14 +27,14 @@
 <div class= "form-group" ng-class="{error: myForm.name.$invalid}">
     <label class= "col-md-2"> Name </label>
     <div class="col-md-4">
-    <input name="name" ng-model="inventory.itemName" type= "text" class= "form-control" placeholder="Item name" required/>
+    <input name="name" ng-model="inventory.itemName" type= "text" class= "form-control" placeholder="Item Name" required/>
     <span ng-show="myForm.name.$dirty && myForm.name.$invalid" class="help-inline">Item Name Required</span>
     </div>
 </div>
 <div class= "form-group">
     <label class= "col-md-2"> Serial Number  </label>
     <div class="col-md-4">
-    <input name="serial.Number" ng-model="inventory.serial.Number" type= "serial.Number" class= "form-control" placeholder="Enter serial.Number" required/>
+    <input name="serial.Number" ng-model="inventory.serial.Number" type= "serial.Number" class= "form-control" placeholder="Serial Number" required/>
     <span ng-show="myForm.serial.Number.$dirty && myForm.serial.Number.$invalid && !myForm.serial.Number.$error.serial.Number" class="help-inline">serial.Number Required</span>
     <span ng-show="myForm.serial.Number.$error.serial.Number" class="help-inline">serial.Number is not valid</span>
     </div>
@@ -42,7 +42,7 @@
 <div class= "form-group">
     <label class= "col-md-2">Type </label>
     <div class="col-md-4">
-    <input ng-model="inventory.type" type= "text" class= "form-control" placeholder= "Item Type"/>
+    <input ng-model="inventory.type" type= "text" class= "form-control" placeholder= "Type"/>
     </div>
 </div>
 <div class= "form-group">

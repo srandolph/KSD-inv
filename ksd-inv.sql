@@ -24,5 +24,5 @@ CREATE TABLE IF NOT EXISTS `inventory` (
 
 INSERT INTO `inventory` (`itemNumber`, `itemName`, `serialNumber`, `type`, `room`, `city`) VALUES
 (103, 'Johns Desktop Computer', '238-1338-22', 'Desktop','251', 'Kansas City'),
-(112, 'sony bravia 40 HDMI', 'SB-20070902218', 'Television', '2nd Floor Conference', 'Topeka');
+(112, 'Sony Bravia, 40 HDMI', 'SB-2007-902218', 'Television', '2nd Floor Conference', 'Topeka');
 
