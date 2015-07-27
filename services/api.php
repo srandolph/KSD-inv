@@ -63,7 +63,7 @@
 			if($this->get_request_method() != "GET"){
 				$this->response('',406);
 			}
-			$query="SELECT distinct c.itemNumber, c.itemName, c.serialNumber, c.type, c.room, c.scity, c.ts FROM inventory c order by c.itemNumber desc";
+			$query="SELECT distinct c.itemNumber, c.itemName, c.serialNumber, c.type, c.room, c.city, c.ts FROM inventory c order by c.itemNumber desc";
 			$r = $this->mysqli->query($query) or die($this->mysqli->error.__LINE__);
 
 			if($r->num_rows > 0){
