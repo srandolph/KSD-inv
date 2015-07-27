@@ -27,22 +27,27 @@
 <div class= "form-group" ng-class="{error: myForm.name.$invalid}">
     <label class= "col-md-2"> Name </label>
     <div class="col-md-4">
-    <input name="name" ng-model="inventory.itemName" type= "text" class= "form-control" placeholder="Item Name" required/>
+    <input name="itemName" ng-model="inventory.itemName" type= "text" class= "form-control" placeholder="Item Name" required/>
     <span ng-show="myForm.name.$dirty && myForm.name.$invalid" class="help-inline">Item Name Required</span>
     </div>
 </div>
 <div class= "form-group">
     <label class= "col-md-2"> Serial Number  </label>
     <div class="col-md-4">
-    <input name="serial.Number" ng-model="inventory.serial.Number" type= "serial.Number" class= "form-control" placeholder="Serial Number" required/>
-    <span ng-show="myForm.serial.Number.$dirty && myForm.serial.Number.$invalid && !myForm.serial.Number.$error.serial.Number" class="help-inline">serial.Number Required</span>
-    <span ng-show="myForm.serial.Number.$error.serial.Number" class="help-inline">serial.Number is not valid</span>
+    <input name="serial.Number" ng-model="inventory.serialNumber" type= "serialNumber" class= "form-control" placeholder="Serial Number" required/>
+    <span ng-show="myForm.serialNumber.$dirty && myForm.serialNumber.$invalid && !myForm.serialNumber.$error.serialNumber" class="help-inline">serialNumber Required</span>
+    <span ng-show="myForm.serialNumber.$error.serialNumber" class="help-inline">serialNumber is not valid</span>
     </div>
 </div>
 <div class= "form-group">
     <label class= "col-md-2">Type </label>
     <div class="col-md-4">
-    <input ng-model="inventory.type" type= "text" class= "form-control" placeholder= "Type"/>
+    <select ng-model="inventory.type" type= "text" class= "form-control" placeholder= "Type">
+      <option value="DVD Player">DVD Player</option>
+      <option value="Desktop">Desktop</option>
+      <option value="Laptop">Laptop</option>
+      <option value="Television">Television</option>
+    </select>
     </div>
 </div>
 <div class= "form-group">
@@ -54,7 +59,12 @@
 <div class= "form-group">
     <label class= "col-md-2">City </label>
     <div class="col-md-4">
-    <input ng-model="inventory.city" type= "text" class= "form-control" placeholder= "City"/>
+    <select ng-model="inventory.city" type= "text" class= "form-control" placeholder= "City">
+      <option value="Kansas City">Kansas City</option>
+      <option value="Topeka">Topeka</option>
+      <option value="Wichita">Wichita</option>
+    </select>
+{{ model }}
     </div>
 </div>
 <div class= "form-group">
