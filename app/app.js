@@ -8,7 +8,7 @@ app.factory("services", ['$http', function($http) {
     obj.getInventory = function(inventoryID){
         return $http.get(serviceBase + 'inventory?id=' + inventoryID);
     }
-    
+
 
     obj.insertInventory = function (inventory) {
     return $http.post(serviceBase + 'insertInventory', inventory).then(function (results) {
@@ -30,7 +30,6 @@ app.factory("services", ['$http', function($http) {
 
     return obj;
 }]);
-
 app.controller('listCtrl', function ($scope, services) {
     services.getInventories().then(function(data){
         $scope.inventories = data.data;
